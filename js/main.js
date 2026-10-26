@@ -443,7 +443,9 @@
       });
       var hide = visible.size > 0;
       btn.classList.toggle('is-hidden', hide);
-      if (hide) btn.setAttribute('tabindex', '-1'); else btn.removeAttribute('tabindex');
+      $$('a', btn).forEach(function (a) {
+        if (hide) a.setAttribute('tabindex', '-1'); else a.removeAttribute('tabindex');
+      });
     }, { threshold: 0, rootMargin: '-20% 0px -20% 0px' }); // ignore slivers at the screen edges
     targets.forEach(function (t) { io.observe(t); });
   }
