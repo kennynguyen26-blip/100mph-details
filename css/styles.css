@@ -178,6 +178,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   text-decoration: none;
   line-height: 1;
 }
+.logo-img { display: block; height: 52px; width: auto; }
+.site-footer .logo-img { height: 64px; }
+@media (max-width: 359px) { .site-header .logo-img { height: 44px; } }
 .wm-line { font-size: 1.75rem; letter-spacing: -0.01em; line-height: 0.9; }
 .wm-100 { color: var(--text); }
 .wm-mph { color: var(--red); margin-left: 0.06em; }
