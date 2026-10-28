@@ -1156,31 +1156,16 @@ body.menu-open .site-header { background: var(--bg); }
 
 /* ---------- Floating button ---------- */
 
-.float-bar {
+.float-cta {
   position: fixed;
   z-index: 40;
-  left: max(1rem, env(safe-area-inset-left, 0px));
+  right: max(1rem, env(safe-area-inset-right, 0px));
   bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-  display: flex;
-  gap: 0.5rem;
-  max-width: calc(100vw - 2rem);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s;
-}
-.float-bar.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(0.75rem);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
-}
-body.menu-open .float-bar { visibility: hidden; opacity: 0; }
-
-.float-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
   min-height: 3rem;
-  padding: 0 1.25rem;
+  padding: 0 1.5rem;
   border-radius: 999px;
   background: var(--red);
   color: var(--on-red);
@@ -1189,26 +1174,23 @@ body.menu-open .float-bar { visibility: hidden; opacity: 0; }
   text-decoration: none;
   white-space: nowrap;
   box-shadow: 0 6px 20px oklch(0.1 0.005 25 / 0.5);
-  transition: background-color var(--dur) var(--ease), transform 200ms var(--ease);
+  opacity: 1;
+  transform: none;
+  transition: transform 250ms var(--ease), opacity 250ms var(--ease), visibility 0s, background-color var(--dur) var(--ease);
 }
-.float-cta:active { transform: translateY(1px); }
 .float-cta:hover { background: var(--red-press); }
+.float-cta.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(calc(100% + 1.5rem));
+  transition: transform 250ms var(--ease), opacity 250ms var(--ease), visibility 0s linear 250ms;
+}
+body.menu-open .float-cta { visibility: hidden; opacity: 0; }
 
-/* Off-white so it stands apart from the red booking button */
-.float-quote {
-  gap: 0.5rem;
-  background: var(--text);
-  color: var(--bg);
-  border: 2px solid var(--text);
+@media (prefers-reduced-motion: reduce) {
+  .float-cta, .float-cta.is-hidden { transition: none !important; transform: none; }
 }
-.float-quote::after {
-  content: "";
-  width: 0.45rem; height: 0.45rem;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-}
-.float-quote:hover { background: oklch(0.88 0.005 80); border-color: oklch(0.88 0.005 80); }
 
 /* ---------- Legal pages ---------- */
 

@@ -411,24 +411,61 @@
     });
   }
 
-  /* ---------- Floating "Text Us": hide while quote or contact is in view ---------- */
+  /* ---------- Floating "Get a Quote" ----------
+     Hidden while the hero, quote builder or contact section is in view.
+     Past the hero it hides while scrolling down and returns when scrolling up. */
   function initFloat() {
     var btn = $('[data-float]');
     if (!btn) return;
+    var hero = $('.hero');
     var targets = ['#quote', '#contact'].map(function (s) { return $(s); }).filter(Boolean);
-    if (!('IntersectionObserver' in window) || !targets.length) return;
-    var visible = new Set();
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target);
-      });
-      var hide = visible.size > 0;
+    var heroInView = !!hero;
+    var sectionsInView = new Set();
+    var scrollingDown = false;
+    var lastY = window.scrollY;
+
+    function update() {
+      var hide = heroInView || sectionsInView.size > 0 || scrollingDown;
       btn.classList.toggle('is-hidden', hide);
-      $$('a', btn).forEach(function (a) {
-        if (hide) a.setAttribute('tabindex', '-1'); else a.removeAttribute('tabindex');
+      if (hide) { btn.setAttribute('tabindex', '-1'); btn.setAttribute('aria-hidden', 'true'); }
+      else { btn.removeAttribute('tabindex'); btn.removeAttribute('aria-hidden'); }
+    }
+
+    if ('IntersectionObserver' in window) {
+      if (hero) {
+        new IntersectionObserver(function (entries) {
+          heroInView = entries[entries.length - 1].isIntersecting;
+          update();
+        }, { threshold: 0 }).observe(hero);
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) sectionsInView.add(en.target); else sectionsInView.delete(en.target);
+        });
+        update();
+      }, { threshold: 0, rootMargin: '-20% 0px -20% 0px' }); // ignore slivers at the screen edges
+      targets.forEach(function (t) { io.observe(t); });
+    } else {
+      heroInView = false;
+    }
+
+    // Scroll direction, with a small dead zone so tiny jitters don't toggle it
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (Math.abs(y - lastY) > 6) {
+          scrollingDown = y > lastY;
+          lastY = y;
+          update();
+        }
+        ticking = false;
       });
-    }, { threshold: 0, rootMargin: '-20% 0px -20% 0px' }); // ignore slivers at the screen edges
-    targets.forEach(function (t) { io.observe(t); });
+    }, { passive: true });
+
+    update();
   }
 
   /* ---------- Scroll reveals (GSAP, light touch) ---------- */
