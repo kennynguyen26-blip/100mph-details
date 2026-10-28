@@ -1,0 +1,16 @@
+Image credits for 100 MPH Details
+
+AI-generated with Higgsfield (GPT Image 2):
+- hero-car.jpg
+- hero-car-mobile.jpg
+- vehicle-car.png
+- vehicle-suv.png
+- vehicle-truck.png
+- vehicle-van.png
+
+These images are illustrations only. They are not photos of our work and must
+never be used in the Our Work section or the before/after slider.
+
+Other files:
+- logo.png, logo-mark.png: 100 MPH Details logo, supplied by the owner.
+- og.jpg: share image made from the owner's logo.

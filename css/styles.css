@@ -314,39 +314,58 @@ body.menu-open .site-header { background: var(--bg); }
 
 .hero {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 2.5rem);
   padding-bottom: clamp(3rem, 8vw, 5rem);
-  /* A single work light from the upper right, nothing more */
-  background:
-    radial-gradient(60rem 40rem at 85% 10%, oklch(0.22 0.01 40 / 0.9), transparent 70%),
-    var(--bg);
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
+/* Car photo: full-bleed, sized to the viewport width and anchored bottom-right,
+   so the car sits right of the text column. Masks fade it into the base colour. */
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-media picture { display: contents; }
+.hero-media img {
+  position: absolute;
+  right: -5%;
+  bottom: 0;
+  width: 105%;
+  max-width: none;
+  height: auto;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 22%, #000 50%),
+    linear-gradient(to bottom, transparent 0%, #000 22%, #000 62%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 22%, #000 50%),
+    linear-gradient(to bottom, transparent 0%, #000 22%, #000 62%, transparent 100%);
+  mask-composite: intersect;
 }
 
+.hero-copy { max-width: 44rem; }
+
 .hero-title {
-  font-size: clamp(3rem, 8.4vw, 7.25rem);
-  line-height: 0.88;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.005em;
   text-transform: uppercase;
-  text-wrap: balance;
 }
 .hero-title span { display: block; color: var(--muted); }
 
 .hero-sub {
-  margin: 1.75rem 0 0;
+  margin: 1.5rem 0 0;
   max-width: 34rem;
-  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  font-size: 1.1rem;
   color: var(--text);
 }
 
@@ -354,51 +373,24 @@ body.menu-open .site-header { background: var(--bg); }
 
 .hero-note { margin: 1.25rem 0 0; font-size: 0.9375rem; color: var(--muted); }
 
-.hero-gauge { justify-self: end; width: 100%; max-width: 30rem; }
-
-.gauge { width: 100%; height: auto; overflow: visible; }
-.gauge-arc { fill: none; stroke: var(--line-strong); stroke-width: 2; stroke-linecap: round; }
-.tick { stroke: var(--muted); stroke-width: 1.5; stroke-linecap: round; }
-.tick-major { stroke: var(--text); stroke-width: 2.5; }
-.gauge-num {
-  fill: var(--muted);
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-.gauge-needle {
-  fill: var(--red);
-  transform-box: view-box;
-  transform-origin: 200px 200px;
-  transform: rotate(120deg);
-}
-/* With JS and motion allowed, start at 0 so there is no flash at 100 before the sweep */
-@media (prefers-reduced-motion: no-preference) {
-  .js .gauge-needle { transform: rotate(-120deg); }
-}
-.gauge-hub { fill: var(--bg); stroke: var(--text); stroke-width: 3; }
-.gauge-readout {
-  fill: var(--text);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 800;
-  font-stretch: 75%;
-  font-size: 46px;
-  font-variant-numeric: tabular-nums;
-}
-.gauge-unit {
-  fill: var(--muted);
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-}
-
 @media (max-width: 767px) {
-  .hero { align-items: flex-start; }
-  .hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .hero-gauge { justify-self: center; max-width: 20rem; }
+  .hero {
+    align-items: flex-start;
+    padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 9.5rem);
+  }
+  /* Mobile crop sits top-right behind the text with a heavier fade */
+  .hero-media img {
+    top: 0;
+    bottom: auto;
+    right: 0;
+    width: 100%;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 14%),
+      linear-gradient(to bottom, #000 48%, transparent 70%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 14%),
+      linear-gradient(to bottom, #000 48%, transparent 70%);
+  }
   .hero-ctas .btn { flex: 1 1 12rem; }
 }
 
@@ -432,6 +424,47 @@ body.menu-open .site-header { background: var(--bg); }
   }
   .step-num { font-size: 2.5rem; }
   .step p { margin: 0; max-width: none; }
+}
+
+/* ---------- Vehicles we service ---------- */
+
+.vehicles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: end;
+}
+.vehicle { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.vehicle-img {
+  width: 100%;
+  max-width: 17rem;
+  height: auto;
+  aspect-ratio: 600 / 371;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 16px 14px oklch(0.08 0.005 25 / 0.75));
+  transition: transform 300ms var(--ease);
+}
+.vehicle-label {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 1.375rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+@media (hover: hover) {
+  .vehicle:hover .vehicle-img { transform: translateY(-4px); }
+}
+.vehicle:active .vehicle-img { transform: translateY(-4px); }
+@media (prefers-reduced-motion: reduce) {
+  .vehicle:hover .vehicle-img, .vehicle:active .vehicle-img { transform: none; }
+}
+@media (max-width: 767px) {
+  .vehicles { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.5rem; }
 }
 
 /* ---------- Packages ---------- */
@@ -694,6 +727,32 @@ body.menu-open .site-header { background: var(--bg); }
 .opt:has(input:disabled) { cursor: not-allowed; }
 .opt:has(input:disabled):hover .opt-box { border-color: var(--line); }
 
+/* Vehicle tiles in the quote builder */
+.opts-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.opt-tile .opt-box {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: end;
+  gap: 0.5rem;
+  padding: 0.875rem 0.625rem 0.75rem;
+  text-align: center;
+}
+.opt-tile img {
+  width: 100%;
+  max-width: 8.5rem;
+  height: auto;
+  aspect-ratio: 600 / 371;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 8px 8px oklch(0.08 0.005 25 / 0.7));
+  pointer-events: none; /* the filter puts the image above the radio; let taps reach it */
+}
+.opt-tile input:checked + .opt-box {
+  border-color: var(--red);
+  box-shadow: inset 0 0 0 1px var(--red);
+  background: var(--raised-2);
+}
+
 .fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.875rem; }
 .field label { display: block; margin-bottom: 0.375rem; font-size: 0.9375rem; font-weight: 600; }
 .field input {
@@ -767,6 +826,9 @@ body.menu-open .site-header { background: var(--bg); }
 }
 @media (max-width: 599px) {
   .opts, .opts-2, .opts-3, .fields { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 599px) {
+  .opts-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- Our work ---------- */

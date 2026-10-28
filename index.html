@@ -83,7 +83,13 @@
 
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
+      <div class="hero-media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 767px)" srcset="images/hero-car-mobile.jpg" width="900" height="750">
+          <img src="images/hero-car.jpg" alt="" width="2400" height="1028" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="wrap">
         <div class="hero-copy">
           <p class="eyebrow">Mobile Auto Detailing · Katy, TX</p>
           <h1 class="hero-title" id="hero-title">Showroom clean. <span>Right in your driveway.</span></h1>
@@ -93,50 +99,6 @@
             <a class="btn btn-ghost" href="#quote">Build Your Quote</a>
           </div>
           <p class="hero-note">Zelle or cash. Paid when we're done.</p>
-        </div>
-
-        <div class="hero-gauge">
-          <svg class="gauge" viewBox="0 0 400 320" role="img" aria-labelledby="gauge-title">
-            <title id="gauge-title">Speedometer with the needle at 100</title>
-            <path class="gauge-arc" d="M 61.4 280 A 160 160 0 1 1 338.6 280"/>
-            <g class="gauge-ticks">
-              <line class="tick tick-major" x1="61.4" y1="280.0" x2="75.3" y2="272.0"/>
-              <line class="tick" x1="47.8" y1="249.4" x2="55.4" y2="247.0"/>
-              <line class="tick tick-major" x1="40.9" y1="216.7" x2="56.8" y2="215.1"/>
-              <line class="tick" x1="40.9" y1="183.3" x2="48.8" y2="184.1"/>
-              <line class="tick tick-major" x1="47.8" y1="150.6" x2="63.0" y2="155.5"/>
-              <line class="tick" x1="61.4" y1="120.0" x2="68.4" y2="124.0"/>
-              <line class="tick tick-major" x1="81.1" y1="92.9" x2="93.0" y2="103.6"/>
-              <line class="tick" x1="106.0" y1="70.6" x2="110.7" y2="77.0"/>
-              <line class="tick tick-major" x1="134.9" y1="53.8" x2="141.4" y2="68.4"/>
-              <line class="tick" x1="166.7" y1="43.5" x2="168.4" y2="51.3"/>
-              <line class="tick tick-major" x1="200.0" y1="40.0" x2="200.0" y2="56.0"/>
-              <line class="tick" x1="233.3" y1="43.5" x2="231.6" y2="51.3"/>
-              <line class="tick tick-major" x1="265.1" y1="53.8" x2="258.6" y2="68.4"/>
-              <line class="tick" x1="294.0" y1="70.6" x2="289.3" y2="77.0"/>
-              <line class="tick tick-major" x1="318.9" y1="92.9" x2="307.0" y2="103.6"/>
-              <line class="tick" x1="338.6" y1="120.0" x2="331.6" y2="124.0"/>
-              <line class="tick tick-major" x1="352.2" y1="150.6" x2="337.0" y2="155.5"/>
-              <line class="tick" x1="359.1" y1="183.3" x2="351.2" y2="184.1"/>
-              <line class="tick tick-major" x1="359.1" y1="216.7" x2="343.2" y2="215.1"/>
-              <line class="tick" x1="352.2" y1="249.4" x2="344.6" y2="247.0"/>
-              <line class="tick tick-major tick-top" x1="338.6" y1="280.0" x2="324.7" y2="272.0"/>
-            </g>
-            <g class="gauge-nums" aria-hidden="true">
-              <text class="gauge-num" x="40.7" y="297.0" text-anchor="middle">0</text>
-              <text class="gauge-num" x="25.0" y="148.1" text-anchor="middle">20</text>
-              <text class="gauge-num" x="125.2" y="36.9" text-anchor="middle">40</text>
-              <text class="gauge-num" x="274.8" y="36.9" text-anchor="middle">60</text>
-              <text class="gauge-num" x="375.0" y="148.1" text-anchor="middle">80</text>
-              <text class="gauge-num" x="359.3" y="297.0" text-anchor="middle">100</text>
-            </g>
-            <g class="gauge-needle" data-needle>
-              <polygon points="198.6,58 201.4,58 205.5,214 194.5,214"/>
-            </g>
-            <circle class="gauge-hub" cx="200" cy="200" r="11"/>
-            <text class="gauge-readout" x="200" y="270" text-anchor="middle" aria-hidden="true" data-readout>100</text>
-            <text class="gauge-unit" x="200" y="294" text-anchor="middle" aria-hidden="true">MPH</text>
-          </svg>
         </div>
       </div>
     </section>
@@ -159,6 +121,34 @@
             <p>We pull up, get to work, and you pay by Zelle or cash when it's done.</p>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <!-- VEHICLES WE SERVICE -->
+    <section class="section section-vehicles" id="vehicles" aria-labelledby="vehicles-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="vehicles-title">Vehicles We Service</h2>
+          <p class="section-lede">Cars, SUVs, trucks and vans. We come to you.</p>
+        </div>
+        <ul class="vehicles" data-reveal>
+          <li class="vehicle">
+            <img class="vehicle-img" src="images/vehicle-car.png" alt="" width="600" height="278" loading="lazy" decoding="async">
+            <span class="vehicle-label">Cars</span>
+          </li>
+          <li class="vehicle">
+            <img class="vehicle-img" src="images/vehicle-suv.png" alt="" width="600" height="331" loading="lazy" decoding="async">
+            <span class="vehicle-label">SUVs</span>
+          </li>
+          <li class="vehicle">
+            <img class="vehicle-img" src="images/vehicle-truck.png" alt="" width="600" height="327" loading="lazy" decoding="async">
+            <span class="vehicle-label">Trucks</span>
+          </li>
+          <li class="vehicle">
+            <img class="vehicle-img" src="images/vehicle-van.png" alt="" width="600" height="371" loading="lazy" decoding="async">
+            <span class="vehicle-label">Vans</span>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -354,18 +344,22 @@
             <fieldset class="q-step" id="q-vehicle">
               <legend><span class="q-num" aria-hidden="true">1</span> Vehicle</legend>
               <p class="q-hint" id="vehicle-hint">This doesn't change the starting price. It helps us plan.</p>
-              <div class="opts opts-3">
-                <label class="opt">
-                  <input type="radio" name="vehicle" value="car / coupe" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><span class="opt-dot" aria-hidden="true"></span><span class="opt-label">Car / Coupe</span></span>
+              <div class="opts opts-4">
+                <label class="opt opt-tile">
+                  <input type="radio" name="vehicle" value="car" aria-describedby="vehicle-hint">
+                  <span class="opt-box"><img src="images/vehicle-car.png" alt="" width="600" height="278" loading="lazy" decoding="async"><span class="opt-label">Car</span></span>
                 </label>
-                <label class="opt">
-                  <input type="radio" name="vehicle" value="SUV / truck" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><span class="opt-dot" aria-hidden="true"></span><span class="opt-label">SUV / Truck</span></span>
+                <label class="opt opt-tile">
+                  <input type="radio" name="vehicle" value="SUV" aria-describedby="vehicle-hint">
+                  <span class="opt-box"><img src="images/vehicle-suv.png" alt="" width="600" height="331" loading="lazy" decoding="async"><span class="opt-label">SUV</span></span>
                 </label>
-                <label class="opt">
-                  <input type="radio" name="vehicle" value="3-row SUV / van" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><span class="opt-dot" aria-hidden="true"></span><span class="opt-label">3-Row SUV / Van</span></span>
+                <label class="opt opt-tile">
+                  <input type="radio" name="vehicle" value="truck" aria-describedby="vehicle-hint">
+                  <span class="opt-box"><img src="images/vehicle-truck.png" alt="" width="600" height="327" loading="lazy" decoding="async"><span class="opt-label">Truck</span></span>
+                </label>
+                <label class="opt opt-tile">
+                  <input type="radio" name="vehicle" value="van" aria-describedby="vehicle-hint">
+                  <span class="opt-box"><img src="images/vehicle-van.png" alt="" width="600" height="371" loading="lazy" decoding="async"><span class="opt-label">Van</span></span>
                 </label>
               </div>
             </fieldset>

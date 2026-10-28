@@ -79,35 +79,6 @@
     else if (mobile.addListener) mobile.addListener(onBreakpoint);
   }
 
-  /* ---------- Speedometer needle: one sweep 0 -> 100 ---------- */
-  function initGauge() {
-    var needle = $('[data-needle]');
-    var readout = $('[data-readout]');
-    if (!needle) return;
-    var END = 120, START = -120, DURATION = 1200;
-
-    function set(progress) {
-      var angle = START + (END - START) * progress;
-      needle.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
-      if (readout) readout.textContent = String(Math.round(progress * 100));
-    }
-
-    if (reducedMotion()) { set(1); return; }
-
-    // Ease-out exponential, normalized so it lands exactly on 1.
-    function easeOutExpo(t) { return t >= 1 ? 1 : (1 - Math.pow(2, -10 * t)) / (1 - Math.pow(2, -10)); }
-
-    set(0);
-    var start = null;
-    function frame(now) {
-      if (start === null) start = now;
-      var t = Math.min((now - start) / DURATION, 1);
-      set(easeOutExpo(t));
-      if (t < 1) requestAnimationFrame(frame);
-    }
-    setTimeout(function () { requestAnimationFrame(frame); }, 250);
-  }
-
   /* ---------- Package "See what's included" toggles (mobile) ---------- */
   function initPackages() {
     $$('[data-pkg-toggle]').forEach(function (btn) {
@@ -471,7 +442,6 @@
   function init() {
     initHeader();
     initMenu();
-    initGauge();
     initPackages();
     initQuote();
     initFloat();
