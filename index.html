@@ -24,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Saira:ital,wdth,wght@1,50..100,800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&amp;family=Geist:wght@400..700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
   <link rel="stylesheet" href="css/styles.css">
 
   <script>document.documentElement.classList.add('js');</script>
@@ -133,19 +133,19 @@
         </div>
         <ul class="vehicles" data-reveal>
           <li class="vehicle">
-            <img class="vehicle-img" src="images/vehicle-car.png" alt="" width="600" height="278" loading="lazy" decoding="async">
-            <span class="vehicle-label">Cars</span>
+            <img class="vehicle-img" src="images/vehicle-sedan.png" alt="" width="440" height="204" loading="lazy" decoding="async">
+            <span class="vehicle-label">Sedans</span>
           </li>
           <li class="vehicle">
-            <img class="vehicle-img" src="images/vehicle-suv.png" alt="" width="600" height="331" loading="lazy" decoding="async">
+            <img class="vehicle-img" src="images/vehicle-suv.png" alt="" width="440" height="243" loading="lazy" decoding="async">
             <span class="vehicle-label">SUVs</span>
           </li>
           <li class="vehicle">
-            <img class="vehicle-img" src="images/vehicle-truck.png" alt="" width="600" height="327" loading="lazy" decoding="async">
+            <img class="vehicle-img" src="images/vehicle-truck.png" alt="" width="440" height="240" loading="lazy" decoding="async">
             <span class="vehicle-label">Trucks</span>
           </li>
           <li class="vehicle">
-            <img class="vehicle-img" src="images/vehicle-van.png" alt="" width="600" height="371" loading="lazy" decoding="async">
+            <img class="vehicle-img" src="images/vehicle-van.png" alt="" width="440" height="272" loading="lazy" decoding="async">
             <span class="vehicle-label">Vans</span>
           </li>
         </ul>
@@ -156,26 +156,31 @@
     <section class="section" id="services" aria-labelledby="packages-title">
       <div class="wrap">
         <div class="section-head" data-reveal>
-          <h2 class="section-title" id="packages-title">Packages</h2>
-          <p class="section-lede">Three levels of clean, all done at your place.</p>
+          <p class="eyebrow">Packages</p>
+          <h2 class="section-title" id="packages-title">Three levels of clean.</h2>
+          <p class="section-lede">All done at your place. Pick one, or build a quote and we'll confirm by text.</p>
         </div>
 
         <div class="packages">
           <article class="pkg" data-pkg data-reveal>
             <div class="pkg-head">
+              <p class="pkg-level"><span class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span class="pkg-level-text">Level 1 of 3</span></p>
               <h3 class="pkg-name">The Quick Detail</h3>
               <p class="pkg-tag">A cleaner ride, in less time.</p>
               <p class="pkg-meta">
                 <span class="price">$50<span class="plus">+</span></span>
-                <span class="pkg-time">About 1.5 to 2 hours</span>
+                <span class="pkg-time"><span class="sr-only">Time: </span>About 1.5 to 2 hours</span>
               </p>
-              <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="pkg-quick" data-pkg-toggle>See what's included</button>
+              <div class="pkg-actions">
+                <a class="pkg-cta" href="#quote" data-pick-service="quick">Quote this package</a>
+                <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="pkg-quick" data-pkg-toggle>See what's included</button>
+              </div>
             </div>
             <div class="pkg-includes" id="pkg-quick">
               <h4 class="sr-only">What's included</h4>
               <div class="pkg-list">
                 <h5 class="list-title">Exterior</h5>
-                <ul>
+                <ul class="check-list">
                   <li>Hand wash</li>
                   <li>Wheels and tires cleaned</li>
                   <li>Rinse and hand dry</li>
@@ -185,7 +190,7 @@
               </div>
               <div class="pkg-list">
                 <h5 class="list-title">Interior</h5>
-                <ul>
+                <ul class="check-list">
                   <li>Full vacuum</li>
                   <li>Dash and console wiped down</li>
                   <li>Door panels cleaned</li>
@@ -198,20 +203,24 @@
 
           <article class="pkg" data-pkg data-reveal>
             <div class="pkg-head">
+              <p class="pkg-level"><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span><span class="pkg-level-text">Level 2 of 3</span></p>
               <h3 class="pkg-name">The Full Detail</h3>
               <p class="pkg-tag">The balance of clean and protection.</p>
               <p class="pkg-meta">
                 <span class="price">$90<span class="plus">+</span></span>
-                <span class="pkg-time">About 3 to 4 hours</span>
+                <span class="pkg-time"><span class="sr-only">Time: </span>About 3 to 4 hours</span>
               </p>
-              <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="pkg-full" data-pkg-toggle>See what's included</button>
+              <div class="pkg-actions">
+                <a class="pkg-cta" href="#quote" data-pick-service="full">Quote this package</a>
+                <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="pkg-full" data-pkg-toggle>See what's included</button>
+              </div>
             </div>
             <div class="pkg-includes" id="pkg-full">
               <h4 class="sr-only">What's included</h4>
               <p class="pkg-plus">Everything in the Quick Detail, plus:</p>
               <div class="pkg-list">
                 <h5 class="list-title">Exterior</h5>
-                <ul>
+                <ul class="check-list">
                   <li>Thorough pre-rinse</li>
                   <li>Foam wash</li>
                   <li>Deeper wheel and tire cleaning</li>
@@ -222,7 +231,7 @@
               </div>
               <div class="pkg-list">
                 <h5 class="list-title">Interior</h5>
-                <ul>
+                <ul class="check-list">
                   <li>Deep vacuum</li>
                   <li>Pro-grade interior cleaner on all surfaces</li>
                   <li>Vents, seams and buttons brushed out</li>
@@ -237,20 +246,24 @@
 
           <article class="pkg pkg-heavy" data-pkg data-reveal>
             <div class="pkg-head">
+              <p class="pkg-level"><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pkg-level-text">Level 3 of 3</span></p>
               <h3 class="pkg-name">The 100 MPH Deep Clean</h3>
               <p class="pkg-tag">The ultimate clean, inside and out.</p>
               <p class="pkg-meta">
                 <span class="price">$140<span class="plus">+</span></span>
-                <span class="pkg-time">About 4 to 6+ hours</span>
+                <span class="pkg-time"><span class="sr-only">Time: </span>About 4 to 6+ hours</span>
               </p>
-              <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="pkg-deep" data-pkg-toggle>See what's included</button>
+              <div class="pkg-actions">
+                <a class="pkg-cta" href="#quote" data-pick-service="deep">Quote this package</a>
+                <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="pkg-deep" data-pkg-toggle>See what's included</button>
+              </div>
             </div>
             <div class="pkg-includes" id="pkg-deep">
               <h4 class="sr-only">What's included</h4>
               <p class="pkg-plus">Everything in the Full Detail, plus:</p>
               <div class="pkg-list">
                 <h5 class="list-title">Interior</h5>
-                <ul>
+                <ul class="check-list">
                   <li>Heavy agitation where needed</li>
                   <li>Carpets and mats deep cleaned</li>
                   <li>Stain treatment</li>
@@ -264,7 +277,7 @@
               </div>
               <div class="pkg-list">
                 <h5 class="list-title">Exterior</h5>
-                <ul>
+                <ul class="check-list">
                   <li>Thorough pre-rinse</li>
                   <li>Foam wash</li>
                   <li>Wheels and tires thoroughly cleaned</li>
@@ -285,7 +298,7 @@
               <h3 class="split-name">Interior Only</h3>
               <span class="price">$50<span class="plus">+</span></span>
             </div>
-            <ul class="split-list">
+            <ul class="split-list check-list">
               <li>Full vacuum</li>
               <li>Dash, console and door panels</li>
               <li>Cupholders and crevices</li>
@@ -295,13 +308,14 @@
               <li>Leather cleaned and conditioned</li>
               <li>Detailed brush work</li>
             </ul>
+            <a class="pkg-cta" href="#quote" data-pick-service="interior">Quote Interior Only</a>
           </article>
           <article class="split-col" data-reveal>
             <div class="split-head">
               <h3 class="split-name">Exterior Only</h3>
               <span class="price">$50<span class="plus">+</span></span>
             </div>
-            <ul class="split-list">
+            <ul class="split-list check-list">
               <li>Pre-rinse</li>
               <li>Hand wash</li>
               <li>Wheels and tires</li>
@@ -310,6 +324,7 @@
               <li>Plastic and trim treatment</li>
               <li>Final wipe-down</li>
             </ul>
+            <a class="pkg-cta" href="#quote" data-pick-service="exterior">Quote Exterior Only</a>
           </article>
         </div>
 
@@ -346,20 +361,20 @@
               <p class="q-hint" id="vehicle-hint">This doesn't change the starting price. It helps us plan.</p>
               <div class="opts opts-4">
                 <label class="opt opt-tile">
-                  <input type="radio" name="vehicle" value="car" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><img src="images/vehicle-car.png" alt="" width="600" height="278" loading="lazy" decoding="async"><span class="opt-label">Car</span></span>
+                  <input type="radio" name="vehicle" value="sedan" aria-describedby="vehicle-hint">
+                  <span class="opt-box"><img src="images/vehicle-sedan.png" alt="" width="440" height="204" loading="lazy" decoding="async"><span class="opt-label">Sedan</span></span>
                 </label>
                 <label class="opt opt-tile">
                   <input type="radio" name="vehicle" value="SUV" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><img src="images/vehicle-suv.png" alt="" width="600" height="331" loading="lazy" decoding="async"><span class="opt-label">SUV</span></span>
+                  <span class="opt-box"><img src="images/vehicle-suv.png" alt="" width="440" height="243" loading="lazy" decoding="async"><span class="opt-label">SUV</span></span>
                 </label>
                 <label class="opt opt-tile">
                   <input type="radio" name="vehicle" value="truck" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><img src="images/vehicle-truck.png" alt="" width="600" height="327" loading="lazy" decoding="async"><span class="opt-label">Truck</span></span>
+                  <span class="opt-box"><img src="images/vehicle-truck.png" alt="" width="440" height="240" loading="lazy" decoding="async"><span class="opt-label">Truck</span></span>
                 </label>
                 <label class="opt opt-tile">
                   <input type="radio" name="vehicle" value="van" aria-describedby="vehicle-hint">
-                  <span class="opt-box"><img src="images/vehicle-van.png" alt="" width="600" height="371" loading="lazy" decoding="async"><span class="opt-label">Van</span></span>
+                  <span class="opt-box"><img src="images/vehicle-van.png" alt="" width="440" height="272" loading="lazy" decoding="async"><span class="opt-label">Van</span></span>
                 </label>
               </div>
             </fieldset>

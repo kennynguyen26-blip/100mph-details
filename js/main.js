@@ -146,9 +146,9 @@
       return 'Hi 100 MPH Details! I\'d like to book ' + article(s.serviceName) + ' ' + s.serviceName +
         ' for my ' + s.vehicle + '.' +
         ' Add-ons: ' + (s.addons.length ? s.addons.join(', ') : 'none') + '.' +
-        ' Area: ' + s.area + '.' +
-        ' Preferred day: ' + s.day + '.' +
-        ' Name: ' + s.name + '.' +
+        (s.area ? ' Area: ' + s.area + '.' : '') +
+        (s.day ? ' Preferred day: ' + s.day + '.' : '') +
+        (s.name ? ' Name: ' + s.name + '.' : '') +
         ' Estimate from your site: ' + estimateText(s) + '.';
     }
 
@@ -254,6 +254,16 @@
     });
 
     render();
+
+    // "Quote this package" links: pre-select the service, then the #quote link scrolls there.
+    $$('[data-pick-service]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var input = $('input[name="service"][value="' + link.getAttribute('data-pick-service') + '"]', root);
+        if (!input) return;
+        input.checked = true;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
   }
 
   /* ---------- Our work: render only photos that actually exist ---------- */

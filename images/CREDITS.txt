@@ -3,7 +3,7 @@ Image credits for 100 MPH Details
 AI-generated with Higgsfield (GPT Image 2):
 - hero-car.jpg
 - hero-car-mobile.jpg
-- vehicle-car.png
+- vehicle-sedan.png
 - vehicle-suv.png
 - vehicle-truck.png
 - vehicle-van.png
